@@ -1,0 +1,56 @@
+.header-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.category {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+h1 {
+  text-align: center;
+  text-justify: center;
+}
+
+.category h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.category ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+.category ul li {
+  margin: 5px 0; /* Optional: Adds spacing between list items */
+}
+
+.category ul li a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.category ul li a:hover {
+  text-decoration: underline;
+}
+
+.horizontal-divider {
+  border: none;
+  border-top: 1px solid black;
+  margin: 20px 0;
+}
+
+.vertical-divider {
+  border: none;
+  border-left: 1px solid black;
+  height: auto;
+  margin: 0 10px; /* Adds spacing on either side of the divider */
+  align-self: stretch; /* Ensures the divider stretches to the height of its parent */
+}
