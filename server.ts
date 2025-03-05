@@ -15,6 +15,9 @@ import { RegisterHTMLHandler } from 'mathjax-full/js/handlers/html.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// JS will be disabled for these routes
+const JS_BLOCKED_ROUTES = ['mathJaxCss', 'mathJaxSvg', 'mathML'];
+
 // MathJax Configuration
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
@@ -85,18 +88,22 @@ export function app(): express.Express {
         publicPath: browserDistFolder,
       })
       .then((html) => {
-        // Step 1: Render MathJax in CSS style for <app-math-render>
-        const cssRenderedHtml = html.replace(
-          /<app-math-render[^>]*>\s*<div[^>]*>\s*\$\$([\s\S]*?)\$\$\s*<\/div>\s*<\/app-math-render>/g,
-          (_, mathExpression) => renderMath(mathExpression.trim())
+        // Remove JavaScript unless the route contains "mathJaxJs"
+        if (!req.url.includes("mathJaxJs")) {
+          html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+        }
+
+        // Render MathJax in CSS style for <app-math-render>
+        const cssRenderedHtml = html.replace(/<app-math-render[^>]*>\s*<div[^>]*>\s*\$\$([\s\S]*?)\$\$\s*<\/div>\s*<\/app-math-render>/g, (_, mathExpression) =>
+          renderMath(mathExpression.trim())
         );
-  
-        // Step 2: Render MathJax in SVG style for <app-math-render-svg>
+
+        // Render MathJax in SVG style for <app-math-render-svg>
         const svgRenderedHtml = cssRenderedHtml.replace(
           /<app-math-render-svg[^>]*>\s*<div[^>]*>\s*\$\$([\s\S]*?)\$\$\s*<\/div>\s*<\/app-math-render-svg>/g,
           (_, mathExpression) => renderMathSVG(mathExpression.trim())
         );
-  
+
         // Send the final HTML with both CSS and SVG components rendered
         res.send(svgRenderedHtml);
       })
