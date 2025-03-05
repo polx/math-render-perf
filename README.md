@@ -2,26 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
-## Development server
+## How to run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+There are a few simple steps for running this repo.
 
-## Code scaffolding
+1) run the command `npm install` so that all dependencies are installed
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2) run the command `ng build`, this will enable you to run the SSR version of the app.
 
-## Build
+3) run the command `npm run serve:ssr:mathesis`, this will run an ssr version of the app on http://localhost:4200/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Considerations
 
-## Running unit tests
+in order to have the expected results for the various ssr methods, including MathML, Javascript should be disabled in the browsers, if not unexpected behaviors can happen.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+However, this will be mitigated in the next commit, but if you are reading this, Javascript still needs to be disabled for SSR to shine.
