@@ -81,6 +81,6 @@ export class LargeSvgComponent {
   }
 
   renderMath(): void {
-    MathJax.typesetPromise();
+    if(MathJax.typesetPromise) MathJax.typesetPromise();
   }
 }

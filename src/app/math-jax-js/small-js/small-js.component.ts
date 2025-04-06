@@ -16,6 +16,6 @@ export class SmallJsComponent implements AfterViewInit {
   }
 
   renderMath(): void {
-    MathJax.typesetPromise();
+    if(MathJax.typesetPromise) MathJax.typesetPromise();
   }
 }
