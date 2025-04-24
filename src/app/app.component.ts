@@ -29,5 +29,5 @@ export class AppComponent {
     });
   }
 
-  title = 'mathesis';
+  title = 'math-render-perf';
 }
