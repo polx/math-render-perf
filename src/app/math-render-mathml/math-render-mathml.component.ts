@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-math-render-mathml',
@@ -8,7 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrl: './math-render-mathml.component.css',
 })
 export class MathRenderMathmlComponent {
-  @Input() mathExpression!: string;
+  @Input() mathExpression!: any;
+
+  constructor(private sanitizer: DomSanitizer) {
+    // Bypassing Angular's HTML sanitizer
+    this.mathExpression = this.sanitizer
+      .bypassSecurityTrustHtml(this.mathExpression);
+  }
 
   ngOnInit(): void {
     console.log('MathML Expression:', this.mathExpression);

@@ -39,6 +39,6 @@ export class MediumCssComponent {
   }
 
   renderMath(): void {
-    MathJax.typesetPromise();
+    if(MathJax.typesetPromise) MathJax.typesetPromise();
   }
 }

@@ -912,3 +912,7 @@ mjx-c.mjx-c29.TEX-S4::before {
   padding: 1.75em 0.792em 1.249em 0;
   content: ")";
 }
+
+body {
+  font-family: "Lucida Grande", Helvetica, sans-serif;
+}

@@ -40,6 +40,6 @@ export class MediumSvgComponent {
   }
 
   renderMath(): void {
-    MathJax.typesetPromise();
+    if(MathJax.typesetPromise) MathJax.typesetPromise();
   }
 }
