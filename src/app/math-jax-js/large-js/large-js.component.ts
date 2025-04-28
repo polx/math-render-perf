@@ -80,6 +80,6 @@ export class LargeJsComponent {
   }
 
   renderMath(): void {
-    MathJax.typesetPromise();
+    if(MathJax.typesetPromise) MathJax.typesetPromise();
   }
 }

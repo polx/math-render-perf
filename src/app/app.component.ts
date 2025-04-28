@@ -29,5 +29,5 @@ export class AppComponent {
     });
   }
 
-  title = 'Math-Render-Perf';
+  title = 'math-render-perf';
 }
